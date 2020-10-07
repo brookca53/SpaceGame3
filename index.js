@@ -261,6 +261,21 @@ function animate() {
     
 }
 
+addEventListener('touchstart', (event) => {
+
+    const yDistance = event.clientY - canvas.height /2;
+    const xDistance = event.clientX - canvas.width /2;
+    const angle = Math.atan2(yDistance, xDistance);
+
+    const velocity = {
+        x: Math.cos(angle) * 5,
+        y: Math.sin(angle) * 5
+    }
+
+    projectiles.push(new Projectile(canvas.width / 2, canvas.height / 2, 5, 'white', velocity));
+    
+});
+
 addEventListener('click', (event) => {
 
     const yDistance = event.clientY - canvas.height /2;
